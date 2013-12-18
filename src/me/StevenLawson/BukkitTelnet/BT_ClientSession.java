@@ -365,7 +365,30 @@ public final class BT_ClientSession extends Thread
                     command = COMMAND_INPUT_FILTER.matcher(NONASCII_FILTER.matcher(command).replaceAll("")).replaceFirst("").trim();
                     if (!command.isEmpty())
                     {
-                        sendBukkitCommand(command);
+                        if (command.toLowerCase().startsWith("telnet"))
+                        {
+                            if (command.equalsIgnoreCase("telnet.help"))
+                            {
+                                writeOut("Telnet commands:\r\n");
+                                writeOut("telnet.help - See all of the telnet commands.\r\n");
+                                writeOut("telnet.stopserver - Shutdown the server.\r\n");
+                                writeOut("telnet.reloadserver - Reload the server.\r\n");
+                            }
+                            else if (command.equalsIgnoreCase("telnet.stopserver"))
+                            {
+                                writeOut("Shutting down the server...\r\n");
+                                Bukkit.shutdown();
+                            }
+                            else if (command.equalsIgnoreCase("telnet.reloadserver"))
+                            {
+                                writeOut("Reloading the server...\r\n");
+                                Bukkit.reload();
+                            }
+                        }
+                        else
+                        {
+                            sendBukkitCommand(command);
+                        }
                     }
                 }
             }
