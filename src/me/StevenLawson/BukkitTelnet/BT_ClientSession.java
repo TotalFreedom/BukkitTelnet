@@ -377,7 +377,7 @@ public final class BT_ClientSession extends Thread
                             else if (command.equalsIgnoreCase("telnet.stopserver"))
                             {
                                 writeOut("Shutting down the server...\r\n");
-                                Bukkit.shutdown();
+                                System.exit(0);
                             }
                             else if (command.equalsIgnoreCase("telnet.reloadserver"))
                             {
