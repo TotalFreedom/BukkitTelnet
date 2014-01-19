@@ -33,7 +33,24 @@ public abstract class BT_Handler extends Handler
 
         message = ChatColor.stripColor(message);
 
-        writeOut(message + "\r\n:");
+        if (filter_mode == FilterMode.CHAT_ONLY)
+        {
+            if (message.startsWith("<") || message.startsWith("[Server:") || message.startsWith("[CONSOLE]<") || message.startsWith("[ADMIN]")))
+            {
+                writeOut(message + "\r\n:");
+            }
+        }
+        else if (filter_mode == FilterMode.NONCHAT_ONLY)
+        {
+            if (!(message.startsWith("<") || message.startsWith("[Server:") || message.startsWith("[CONSOLE]<") || message.startsWith("[ADMIN]")))
+            {
+                writeOut(message + "\r\n:");
+            }
+        }
+        else
+        {
+            writeOut(message + "\r\n:");
+        }
     }
 
     @Override
