@@ -4,9 +4,11 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.UnknownHostException;
+import java.util.List;
 import lombok.Getter;
 import me.totalfreedom.bukkittelnet.TelnetConfigLoader.TelnetConfig;
 import me.totalfreedom.bukkittelnet.api.Server;
+import me.totalfreedom.bukkittelnet.session.ClientSession;
 
 public class TelnetServer implements Server
 {
@@ -15,7 +17,7 @@ public class TelnetServer implements Server
     private final BukkitTelnet plugin;
     @Getter
     private final TelnetConfig config;
-    //
+    @Getter
     private SocketListener socketListener;
 
     public TelnetServer(BukkitTelnet plugin, TelnetConfig config)
@@ -92,9 +94,9 @@ public class TelnetServer implements Server
     }
 
     @Override
-    public SocketListener getSocketListener()
+    public List<ClientSession> getSessions()
     {
-        return socketListener;
+        return socketListener.getSessions();
     }
 
 }

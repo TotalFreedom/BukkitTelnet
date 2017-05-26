@@ -4,7 +4,7 @@
 
     <groupId>me.totalfreedom</groupId>
     <artifactId>bukkittelnet</artifactId>
-    <version>4.4</version>
+    <version>4.5</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -45,14 +45,14 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.9-R0.1-SNAPSHOT</version>
+            <version>1.12-pre5-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.16.6</version>
+            <version>1.16.16</version>
             <scope>provided</scope>
         </dependency>
 

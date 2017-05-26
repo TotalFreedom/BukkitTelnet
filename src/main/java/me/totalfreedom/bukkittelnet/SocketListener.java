@@ -7,6 +7,7 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -148,5 +149,10 @@ public class SocketListener extends Thread
 
         clientSessions.clear();
 
+    }
+
+    public List<ClientSession> getSessions()
+    {
+        return Collections.unmodifiableList(clientSessions);
     }
 }

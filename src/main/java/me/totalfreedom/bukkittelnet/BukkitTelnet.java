@@ -1,7 +1,9 @@
 package me.totalfreedom.bukkittelnet;
 
+import me.totalfreedom.bukkittelnet.api.Server;
 import org.bukkit.Bukkit;
 import org.bukkit.event.HandlerList;
+import org.bukkit.plugin.ServicePriority;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class BukkitTelnet extends JavaPlugin
@@ -36,6 +38,8 @@ public class BukkitTelnet extends JavaPlugin
         telnet.startServer();
 
         getServer().getPluginManager().registerEvents(listener, plugin);
+
+        getServer().getServicesManager().register(Server.class, telnet, this, ServicePriority.Normal);
 
         TelnetLogger.info(plugin.getName() + " v" + plugin.getDescription().getVersion() + " enabled");
     }

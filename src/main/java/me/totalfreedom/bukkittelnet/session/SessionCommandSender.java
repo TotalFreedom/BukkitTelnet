@@ -1,6 +1,7 @@
 package me.totalfreedom.bukkittelnet.session;
 
 import java.util.Set;
+import net.md_5.bungee.api.chat.BaseComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
 import org.bukkit.command.ConsoleCommandSender;
@@ -154,6 +155,30 @@ public class SessionCommandSender implements ConsoleCommandSender
     public void sendRawMessage(String string)
     {
         session.writeRawLine(string);
+    }
+
+    @Override
+    public Spigot spigot()
+    {
+        return new Spigot()
+        {
+
+            @Override
+            public void sendMessage(BaseComponent component)
+            {
+                SessionCommandSender.this.sendMessage(component.toPlainText());
+            }
+
+            @Override
+            public void sendMessage(BaseComponent... components)
+            {
+                for (BaseComponent bc : components)
+                {
+                    sendMessage(bc);
+                }
+            }
+
+        };
     }
 
 }

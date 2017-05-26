@@ -1,11 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package me.totalfreedom.bukkittelnet.api;
 
+import java.util.List;
 import me.totalfreedom.bukkittelnet.SocketListener;
+import me.totalfreedom.bukkittelnet.TelnetConfigLoader.TelnetConfig;
+import me.totalfreedom.bukkittelnet.session.ClientSession;
 
 public interface Server
 {
@@ -14,6 +12,11 @@ public interface Server
 
     public void stopServer();
 
+    @Deprecated
     public SocketListener getSocketListener();
+
+    public TelnetConfig getConfig();
+
+    public List<ClientSession> getSessions();
 
 }
